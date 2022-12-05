@@ -18,13 +18,15 @@ export const addLiquidity = async (
 ) => {
   try {
     const tokenContract = new Contract(
-      TOKEN_CONTRACT_ABI,
       TOKEN_CONTRACT_ADDRESS,
+      TOKEN_CONTRACT_ABI,
+
       signer
     );
     const exchangeContract = new Contract(
-      EXCHANGE_CONTRACT_ABI,
       EXCHANGE_CONTRACT_ADDRESS,
+      EXCHANGE_CONTRACT_ABI,
+
       signer
     );
     // CDtokens are ERC20 so user must permit the contract to take the token

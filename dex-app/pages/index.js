@@ -21,11 +21,12 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [liquidityTab, setLiquidityTab] = useState(true);
   const zero = BigNumber.from(0);
-  const [reservedCD, setReservedCD] = useState(zero);
+
   const [ethBalance, setEtherBalance] = useState(zero);
+  const [reservedCD, setReservedCD] = useState(zero);
   const [addEther, setAddEther] = useState(zero);
   const [addCDTokens, setAddCDTokens] = useState(zero);
-  const [cdBalance, setCDBalance] = useState();
+  const [cdBalance, setCDBalance] = useState(zero);
   const [lpBalance, setLPBalance] = useState(zero);
   const [removeEther, setRemoveEther] = useState(zero);
   const [etherBalanceContract, setEtherBalanceContract] = useState(zero);

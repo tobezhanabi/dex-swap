@@ -8,8 +8,9 @@ import { EXCHANGE_CONTRACT_ABI, EXCHANGE_CONTRACT_ADDRESS } from "../constants";
 
 export const removeLiquidity = async (signer, removeLPTokensWei) => {
   const exchangeContract = new Contract(
-    EXCHANGE_CONTRACT_ABI,
     EXCHANGE_CONTRACT_ADDRESS,
+    EXCHANGE_CONTRACT_ABI,
+
     signer
   );
   const tx = await exchangeContract.removeLiquidity(removeLPTokensWei);
@@ -28,8 +29,9 @@ export const getTokensAfterRemove = async (
 ) => {
   try {
     const exchangeContract = new Contract(
-      EXCHANGE_CONTRACT_ABI,
       EXCHANGE_CONTRACT_ADDRESS,
+      EXCHANGE_CONTRACT_ABI,
+
       provider
     );
     // Get the total supply of `Crypto Dev` LP tokens

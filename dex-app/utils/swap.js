@@ -9,7 +9,7 @@ import {
     getAmountOfTokensReceivedFromSwap:  Returns the number of Eth/Crypto Dev tokens that can be received 
     when the user swaps `_swapAmountWei` amount of Eth/Crypto Dev tokens.
 */
-export const getAmountOfTokensReceiveFromSwap = async (
+export const getAmountOfTokensReceivedFromSwap = async (
   _swapAmountWei,
   provider,
   ethSelected,
@@ -17,8 +17,9 @@ export const getAmountOfTokensReceiveFromSwap = async (
   reservedCD
 ) => {
   const exchangeContract = new Contract(
-    EXCHANGE_CONTRACT_ABI,
     EXCHANGE_CONTRACT_ADDRESS,
+    EXCHANGE_CONTRACT_ABI,
+
     provider
   );
   let amountOfTokens;
@@ -53,13 +54,15 @@ export const swapTokens = async (
   ethSelected
 ) => {
   const exchangeContract = new Contract(
-    EXCHANGE_CONTRACT_ABI,
     EXCHANGE_CONTRACT_ADDRESS,
+    EXCHANGE_CONTRACT_ABI,
+
     signer
   );
   const tokenContract = new Contract(
-    TOKEN_CONTRACT_ABI,
     TOKEN_CONTRACT_ADDRESS,
+    TOKEN_CONTRACT_ABI,
+
     signer
   );
   let tx;
@@ -81,6 +84,7 @@ export const swapTokens = async (
       EXCHANGE_CONTRACT_ADDRESS,
       swapAmountWei.toString()
     );
+    await tx.wait();
     // call cryptoDevTokenToEth function which would take in `swapAmountWei` of `Crypto Dev` tokens and would
     // send back `tokenToBeReceivedAfterSwap` amount of `Eth` to the user
     tx = await exchangeContract.cryptoDevTokenToEth(
